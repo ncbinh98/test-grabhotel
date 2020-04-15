@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import gql from "graphql-tag";
 import { Query } from "react-apollo";
+import UpdateMember from "./UpdateMember";
 
 const GET_MEMBERS = gql`
     query {
@@ -29,12 +30,13 @@ class Member extends Component {
                     else {
                         result = data.members.map((value, index) => {
                             return (
-                                <tr key={index}>
-                                    <th scope="row">{index + 1}</th>
-                                    <td>{value.name}</td>
-                                    <td>{value.phone}</td>
-                                    <td>{value.birthday}</td>
-                                </tr>
+                                <UpdateMember key={index} index={index} member={value} />
+                                // <tr key={index}>
+                                //     <th scope="row">{index + 1}</th>
+                                //     <td>{value.name}</td>
+                                //     <td>{value.phone}</td>
+                                //     <td>{value.birthday}</td>
+                                // </tr>
                             );
                         });
                     }
@@ -67,6 +69,7 @@ class Member extends Component {
                                                 <th scope="col">Name</th>
                                                 <th scope="col">Phone</th>
                                                 <th scope="col">Birthday</th>
+                                                <th scope="col">Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>{this.showMembers()}</tbody>
