@@ -9,10 +9,10 @@ class SideBar extends Component {
                 <ul className="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
                     <NavLink className="sidebar-brand d-flex align-items-center justify-content-center" to="/">
                         <div className="sidebar-brand-icon rotate-n-15">
-                            <i className="fas fa-laugh-wink"></i>
+                            <i class="fa fa-id-card" aria-hidden="true"></i>
                         </div>
                         <div className="sidebar-brand-text mx-3">
-                            SB Admin <sup>2</sup>
+                            Admin <sup>2</sup>
                         </div>
                     </NavLink>
 

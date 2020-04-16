@@ -17,6 +17,7 @@ class CreateMember extends Component {
         name: "",
         phone: "",
         birthday: "",
+        isCreated: false,
         myFormRef: null,
         isValid: {
             name: true,
@@ -50,6 +51,10 @@ class CreateMember extends Component {
                         birthday: this.state.birthday
                     }
                 }
+            }).then(data => {
+                this.setState({
+                    isCreated: true
+                });
             });
             this.myFormRef.reset();
             this.setState({
@@ -60,7 +65,8 @@ class CreateMember extends Component {
         }
     };
 
-    createMemberMutation = (createMember, { data }) => {
+    createMemberMutation = (createMember, { data, loading }) => {
+        if (loading) return <span>Loading...</span>;
         return (
             <form
                 ref={el => (this.myFormRef = el)}
@@ -90,7 +96,7 @@ class CreateMember extends Component {
                     <div className="invalid-feedback">Please type your phone.</div>
                 </div>
                 <div className="form-group">
-                    <label htmlFor="birthday">birthday</label>
+                    <label htmlFor="birthday">Birthday</label>
                     <input
                         onChange={this.handleOnChange}
                         type="text"
@@ -102,6 +108,14 @@ class CreateMember extends Component {
                 <button type="submit" className="btn btn-primary">
                     Submit
                 </button>
+                {this.state.isCreated ? (
+                    <div className="alert alert-success alert-dismissible fade show mt-3" role="alert">
+                        <strong>Create new member successfully!</strong>
+                        <button type="button" className="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                ) : null}
             </form>
         );
     };

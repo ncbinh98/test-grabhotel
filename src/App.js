@@ -9,7 +9,7 @@ import routes from "./routes";
 import ApolloClient from "apollo-boost";
 import { ApolloProvider } from "@apollo/react-hooks";
 const client = new ApolloClient({
-    uri: "http://localhost:4000/"
+    uri: "https://test-grabhotel-backend.herokuapp.com/"
 });
 class App extends Component {
     constructor(props) {

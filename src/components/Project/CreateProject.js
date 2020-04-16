@@ -14,6 +14,7 @@ class CreateProject extends Component {
     state = {
         name: "",
         description: "",
+        isCreated: false,
         myFormRef: null,
         isValid: {
             name: true
@@ -42,6 +43,10 @@ class CreateProject extends Component {
                         description: this.state.description
                     }
                 }
+            }).then(data => {
+                this.setState({
+                    isCreated: true
+                });
             });
             this.myFormRef.reset();
             this.setState({
@@ -51,7 +56,8 @@ class CreateProject extends Component {
         }
     };
 
-    createProjectMutation = (createProject, { data }) => {
+    createProjectMutation = (createProject, { data, loading }) => {
+        if (loading) return <span>Loading...</span>;
         return (
             <form
                 ref={el => (this.myFormRef = el)}
@@ -79,6 +85,15 @@ class CreateProject extends Component {
                 <button type="submit" className="btn btn-primary">
                     Submit
                 </button>
+
+                {this.state.isCreated ? (
+                    <div className="alert alert-success alert-dismissible fade show mt-3" role="alert">
+                        <strong>Create new project successfully!</strong>
+                        <button type="button" className="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                ) : null}
             </form>
         );
     };
