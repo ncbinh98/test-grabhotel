@@ -29,7 +29,6 @@ class CreateProject extends Component {
     };
     handleCreateProject = (e, createProject) => {
         e.preventDefault();
-        console.log(createProject);
         this.setState({
             isValid: {
                 name: this.state.name !== "" ? true : false

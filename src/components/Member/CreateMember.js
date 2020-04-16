@@ -34,7 +34,6 @@ class CreateMember extends Component {
     };
     handleCreateMember = (e, createMember) => {
         e.preventDefault();
-        console.log(createMember);
         this.setState({
             isValid: {
                 name: this.state.name !== "" ? true : false,
