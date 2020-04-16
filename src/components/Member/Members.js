@@ -29,15 +29,7 @@ class Member extends Component {
                         );
                     else {
                         result = data.members.map((value, index) => {
-                            return (
-                                <UpdateMember key={index} index={index} member={value} />
-                                // <tr key={index}>
-                                //     <th scope="row">{index + 1}</th>
-                                //     <td>{value.name}</td>
-                                //     <td>{value.phone}</td>
-                                //     <td>{value.birthday}</td>
-                                // </tr>
-                            );
+                            return <UpdateMember key={index} index={index} member={value} />;
                         });
                     }
                     if (error) return `Error! ${error}`;
